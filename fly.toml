@@ -1,0 +1,18 @@
+app = "your-bundler-name"  # auto-generated or choose one
+primary_region = "fra"     # or your preferred region, e.g. "ams", "cdg" for Europe near Nitra/SK
+
+[build]
+  dockerfile = "Dockerfile"  # points to the one you added
+
+[http_service]
+  internal_port = 3000
+  force_https = true
+  auto_stop_machines = false   # save costs when idle
+  auto_start_machines = true
+  min_machines_running = 0    # or 1 if you want always-on
+
+[env]
+  # Example env vars (set sensitive ones via fly secrets)
+  NODE_ENV = "production"
+  # PORT = "3000"             # usually not needed, but if your bundler requires it
+  # Add others like BUNDLER_RPC_URL, PRIVATE_KEY (use secrets!), etc.
